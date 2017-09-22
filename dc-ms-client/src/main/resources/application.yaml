@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-client
+    groupName: ms
+server:
+  port: 8080
+  context-path: /
+
+invoke:
+  zuulHost: ms-zuul.eastdc.cn:85
+  invokeUri: /invoke/invoke.do
+  queryString: service=ms-service-provider&contextPath=/
+
+platform:
+  invokeTrace:
+    enabled: false
+    url: none
+  ribbon:
+    httpClient:
+      timeToLiveInSeconds: 60
+      maxConnectionsTotal: 50
+      maxConcurrentPerRoute: 20
+      maxConnectionTimeoutInSeconds: 3
+      maxReadTimeoutInSeconds: 60
+      maxRetryAttempts: 1

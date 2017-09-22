@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: ms-zuul
+# Dc-Trace 项目名
+    groupName: ms
+server:
+  port: 8080
+  context-path: /
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://ms-eureka-server.eastdc.cn:85/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  RibbonRoutingFilter:
+    route:
+      disable: true
+  routes:
+    invoke:
+      path: /invoke/**
+      serviceId: ms-service-invoker
+    provider:
+      path: /provider/**
+      serviceId: ms-service-provider
+
+
+platform:
+  invokeTrace:
+    enabled: true
+    detailEnabled: true
+# Dc-Trace server地址
+    url: http://localhost:8088/invoke.do
+  ribbon:
+    httpClient:
+      timeToLiveInSeconds: 60
+      maxConnectionsTotal: 50
+      maxConcurrentPerRoute: 20
+      maxConnectionTimeoutInSeconds: 3
+      maxReadTimeoutInSeconds: 60
+      maxRetryAttempts: 1
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000

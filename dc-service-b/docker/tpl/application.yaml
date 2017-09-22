@@ -1,0 +1,17 @@
+--- # webserver
+server:
+  port: 8080
+  context-path: {{ .Env.WEB_CONTEXT }}
+
+spring:
+  application:
+    name: {{ .Env.EUREKA_APPNAME }}
+    
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: {{ .Env.EUREKA_HOME_URL }}
+  instance:
+    prefer-ip-address: true

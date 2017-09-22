@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: {{ .Env.EUREKA_APPNAME }}
+    groupName: {{ .Env.INVOKE_TRACE_PROJECT_CODE }}
+server:
+  port: 8080
+  context-path: /
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: {{ .Env.EUREKA_HOME_URL }}
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  RibbonRoutingFilter:
+    route:
+      disable: true
+  routes:
+    invoke:
+      path: /invoke/**
+      serviceId: {{ .Env.SERVICE_A_APPNAME }}
+    provider:
+      path: /provider/**
+      serviceId: {{ .Env.SERVICE_B_APPNAME }}
+
+platform:
+  invokeTrace:
+    enabled: true
+    detailEnabled: true
+    url: {{ .Env.INVOKE_TRACE_HOME_URL }}/invoke.do
+  ribbon:
+    httpClient:
+      timeToLiveInSeconds: 60
+      maxConnectionsTotal: 50
+      maxConcurrentPerRoute: 20
+      maxConnectionTimeoutInSeconds: 3
+      maxReadTimeoutInSeconds: 60
+      maxRetryAttempts: 1
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000

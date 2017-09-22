@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--
+		<base href="<%=basePath%>">
+ 	-->
+    <title>Demo</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+<link rel="stylesheet" type="text/css" href="styles.css">
+-->
+    <script type="text/javascript" th:src="@{/js/jquery-1.8.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/demo.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/demo.css}">
+</head>
+<body>
+<div class="container">
+    <br/><br/>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3>
+                eureka-invoker DEMO
+            </h3>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="row clearfix">
+        <div style="margin-top:20px">
+            输入服务名（eureka注册应用名）
+            <input style="font-size:20px" type="text" id="hello-service" placeholder="输入服务名"/>
+            输入web上下文
+            <input style="font-size:20px" value="/" type="text" id="hello-context" placeholder="输入web上下文"/>
+            <input style="font-size:20px" type="button" id="hello-btn" value="调用ProviderDemo"/>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

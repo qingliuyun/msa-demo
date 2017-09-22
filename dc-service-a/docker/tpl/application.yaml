@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: {{ .Env.EUREKA_APPNAME }}
+    groupName: {{ .Env.INVOKE_TRACE_PROJECT_CODE }}
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+server:
+  port: 8080
+  context-path: {{ .Env.WEB_CONTEXT }}
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true #从注册中心拉取服务信息
+    serviceUrl:
+      defaultZone: {{ .Env.EUREKA_HOME_URL }}
+  instance:
+    metadata-map:
+      cluster: {{ .Env.TURBINE_CLUSTER }}
+    prefer-ip-address: true
+platform:
+  invokeTrace:
+    enabled: true
+    detailEnabled: true
+    url: {{ .Env.INVOKE_TRACE_HOME_URL }}/invoke.do

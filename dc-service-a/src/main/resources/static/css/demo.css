@@ -1,0 +1,16 @@
+td {
+    text-align: center;
+}
+.fl{
+    float: left;
+}
+#weather-info-area table{
+    font-size: 20px;
+}
+#weather-info-area table td{
+    padding-left: 10px;
+}
+#weather-info-area table th{
+    padding-left: 10px;
+    text-align: center;
+}

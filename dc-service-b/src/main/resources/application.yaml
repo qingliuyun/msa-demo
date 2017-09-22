@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: service-provider
+server:
+  port: 8080
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false #从注册中心拉取服务信息
+    serviceUrl:
+      defaultZone: http://10.35.3.164:8041/myeureka-server/eureka/
+  instance:
+    prefer-ip-address: true

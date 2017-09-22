@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello MS</title>
+</head>
+<style rel="stylesheet">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .fl{
+        float: left;
+    }
+    .fr{
+        float: right;
+    }
+    .hide{
+        display: none;
+    }
+</style>
+<body>
+<div style="width: 1200px;margin: 0 auto;margin-top: 10px;">
+    <a style="float: left">
+        <img src="./images/logo.png">
+    </a>
+    <h1 style="display: block;float: left;
+    width: 1000px;
+    text-align: center">
+        Hello Micro-Service!
+    </h1>
+    <p style="clear: both"> </p>
+</div>
+<div style="width: 1100px;margin: 0 auto;">
+    <div class="img-bg" style="width: 100%;height: auto;margin-top: 30px;position: relative">
+        <div style="float: left;
+    padding: 0 260px;
+    width: 100%;
+    box-sizing: border-box;">
+        <div class="bg-div1 fl hide" style="width: 0;height: 192px;background: #6dd779;"></div>
+        <div class="bg-div2 fr hide"  style="width: 580px;height: 192px;background: #6b6c6e;"></div>
+        </div>
+        <span style="display: block;width: 100%;height: 200px;float: left"></span>
+        <img style="width: 680px;position: absolute;top: 0; left: 0;right: 0;margin: 0 auto" src="images/simple-msa-2.png">
+    </div>
+
+
+    <div style="font-size: 16px;line-height: 24px;margin-top: 20px;">
+        <p>
+            在一个微服务架构中，用户发起的请求均指向Api-Gateway，再由Api-Gateway路由至对应业务的后端服务上。
+            实际场景：用户在支付车费时向服务器发起了支付请求，这个请求指向的是Api-Gateway，再由Api-Gateway路由至订单模块，创建支付订单，订单创建好后，再向支付系统发起请求，支付系统响应处理成功。
+        </p>
+        <p>
+            点击下面的按钮，开始向Api-Gateway发起请求，稍等一会儿，可以在<a href="http://221.178.232.93:86/invoke-trace-mgr">Dc-Trace</a>上查看这次请求中，各个后端服务的调用关系及记录。
+        </p>
+        <button id="start-btn" style="display: block; width: 120px;height: 50px;font-size: 20px;
+             margin: 30px auto;
+                    line-height: 50px;border: 1px solid #006fe3;text-align: center"
+           >start</button>
+        <button id="pause-btn" style="display: none; width: 120px;height: 50px;font-size: 20px;
+             margin: 30px auto;
+                    line-height: 50px;border: 1px solid #006fe3;text-align: center"
+           >pause</button>
+    </div>
+</div>
+<script type="text/javascript" src="lib/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.transit.min.js"></script>
+<script type="text/javascript" src="js/context.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script inline="javascript">
+    $(function () {
+        new index();
+    });
+</script>
+</body>
+</html>

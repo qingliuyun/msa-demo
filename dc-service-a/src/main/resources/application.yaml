@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: service-a
+    groupName: ms
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+server:
+  port: 8080
+  context-path: /
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://221.178.232.93:86/hystrix-eureka-server/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      cluster: cluster-a
+
+platform:
+  invokeTrace:
+    enabled: true
+    detailEnabled: true
+    url: http://221.178.232.93:86/invoke-trace-server/invoke.do

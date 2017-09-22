@@ -1,0 +1,19 @@
+--- # webserver
+server:
+  port: 8080
+  context-path: /
+
+spring:
+  application:
+    name: eureka-server
+    
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://ms-eureka-server.eastdc.cn:85/eureka/
+  instance:
+    prefer-ip-address: true
+  server:
+    enableSelfPreservation: false

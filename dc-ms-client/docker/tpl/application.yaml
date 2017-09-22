@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: {{ .Env.APPNAME }}
+    groupName: ms
+server:
+  port: 8080
+  context-path: /
+
+invoke:
+  zuulHost: {{ .Env.ZUUL_URL }}
+  invokeUri: /invoke/invoke.do
+  queryString: service={{ .Env.SERVICE_B_APPNAME }}&contextPath=/
+
+platform:
+  invokeTrace:
+    enabled: false
+    url: none
+  ribbon:
+    httpClient:
+      timeToLiveInSeconds: 60
+      maxConnectionsTotal: 50
+      maxConcurrentPerRoute: 20
+      maxConnectionTimeoutInSeconds: 3
+      maxReadTimeoutInSeconds: 60
+      maxRetryAttempts: 1
